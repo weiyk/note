@@ -115,6 +115,12 @@ public class RetryAop {
                 log.error("方法异常", e);
 
                 for (Class<? extends Throwable> value : exceptions) {
+                    /**
+                     * isAssignableFrom()方法是从类继承的角度去判断，instanceof关键字是从实例继承的角度去判断。
+				   * isAssignableFrom()方法是判断是否为某个类的父类，instanceof关键字是判断是否某个类的子类。
+				   * 	父类.class.isAssignableFrom(子类.class)
+				   * 	子类实例 instanceof 父类类型
+                     */
                     if (value.isAssignableFrom(e.getClass())) {
                         System.out.println("匹配");
                         count++;
